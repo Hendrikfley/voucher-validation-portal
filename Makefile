@@ -12,11 +12,11 @@ target/${PLUGIN_NAME}.zip:
 
 .PHONY: wp-setup
 wp-setup:
-	docker-compose exec wordpress /scripts/setup.sh ${ADMIN_USER} ${ADMIN_PASS}
+	docker compose exec wordpress /scripts/setup.sh ${ADMIN_USER} ${ADMIN_PASS}
 
 .PHONY: wp-start
 wp-start:
-	docker-compose up -d --wait wordpress && make wp-setup
+	docker compose up -d --wait wordpress && make wp-setup
 	@echo "WordPress is now running at http://localhost:8080"
 	@echo "Admin login: http://localhost:8080/wp-admin"
 	@echo "Admin user: ${ADMIN_USER}"
