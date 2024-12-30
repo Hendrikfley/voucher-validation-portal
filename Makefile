@@ -24,4 +24,4 @@ wp-start:
 
 .PHONY: wp-stop
 wp-stop:
-	docker-compose down
+	docker compose down
