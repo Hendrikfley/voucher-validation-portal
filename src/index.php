@@ -3,7 +3,7 @@
  * Plugin Name: Voucher Validation
  * Plugin URI: http://www.deepwood.de/
  * Description: Developed to allow voucher codes to be validated, redeemed and logged to a Database
- * Version: 0.1
+ * Version: 0.5
  * Author: Hendrik 
  * Author URI: https://www.deepwood.de/
  **/
@@ -41,10 +41,16 @@ function enqueue_my_styles()
 
 function enqueue_my_scripts()
 {
-    wp_enqueue_script("my-script", get_url("script.js"), array("jquery"), filemtime(get_path("script.js")));
-    wp_localize_script("my-script", "ajax_object", array(
-        "ajaxurl" => admin_url("admin-ajax.php"),
-    ));
+    global $post;
+
+    // Check if the current post contains the shortcode
+    if (is_page('erlebnispartnerportal')) {
+        wp_enqueue_script("my-script", get_url("script.js"), array("jquery"), filemtime(get_path("script.js")));
+        wp_enqueue_script("html5-qrcode", MY_PLUGIN_URL . "js/html5-qrcode.min.js", array("jquery"), null, false);
+        wp_localize_script("my-script", "ajax_object", array(
+            "ajaxurl" => admin_url("admin-ajax.php"),
+        ));
+    }
 }
 
 

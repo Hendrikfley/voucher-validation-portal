@@ -6,7 +6,6 @@ function render()
 {
     ob_start();
     ?>
-    <script src="https://cdn.jsdelivr.net/npm/html5-qrcode/minified/html5-qrcode.min.js"></script>
     <body>
         <h1>QR Code Scanner</h1>
         <div id="reader"></div>

@@ -40,14 +40,15 @@ function handle_api_control_response($data, $code)
 {
     $voucher_key = key($data);
     $voucher_data = $data[$voucher_key];
-    $product_id = $voucher_data['processed'][0]['product_id']; // ToDo: Error undefined array key
+    $product_id = $voucher_data['processed'][0]['product_id'];
     // Fetch product details from a predefined list or database
     $products = [
         16 => 'Auf Röntgens Spuren',
         8 => 'Baggerfahren',
         4 => 'Ballonfahrt',
         1 => 'Barista-Kurs',
-        17 => 'Kajaktour',
+        11 => 'Kajaktour',
+        17 => 'Gaskessel',  
         19 => 'Kluterthöhle',
         6 => 'Messerschmiedekurs',
         22 => 'Kinderbaggerfahren',
