@@ -19,6 +19,7 @@ require_once MY_PLUGIN_PATH . "functions.php";
 
 register_activation_hook(__FILE__, "setup_db");
 
+
 function setup_db()
 {
     // database setup code
@@ -42,9 +43,10 @@ function enqueue_my_styles()
 function enqueue_my_scripts()
 {
     global $post;
+    $is_localhost = strpos($_SERVER['HTTP_HOST'], 'localhost') !== false;
 
     // Check if the current post contains the shortcode
-    if (is_page('erlebnispartnerportal')) {
+    if ($is_localhost || is_page('erlebnispartnerportal')) {
         wp_enqueue_script("my-script", get_url("script.js"), array("jquery"), filemtime(get_path("script.js")));
         wp_enqueue_script("html5-qrcode", MY_PLUGIN_URL . "js/html5-qrcode.min.js", array("jquery"), null, false);
         wp_localize_script("my-script", "ajax_object", array(
